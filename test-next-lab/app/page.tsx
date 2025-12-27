@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Login from "./Auth/login/page";
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
           <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
             Saba
           </p>
+          <Login/>
         </div>
       
       </main>
