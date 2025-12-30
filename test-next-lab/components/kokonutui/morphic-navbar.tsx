@@ -24,7 +24,7 @@ export function MorphicNavbar() {
   };
 
   return (
-    <nav className="w-full px-6 py-4">
+    <nav className="w-full px-6 py-4 drop-shadow-2xl">
       <div className="relative flex items-center justify-between">
 
         {/* Left: Logo */}

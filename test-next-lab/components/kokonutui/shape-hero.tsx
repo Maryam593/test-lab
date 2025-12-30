@@ -198,14 +198,14 @@ export default function ShapeHero({
       </div>
 
       <div className="container relative z-10 mx-auto px-4 md:px-6">
-        <div className="mx-auto max-w-3xl text-center">
+        <div className="mx-auto max-w-4xl text-center">
           <motion.div
             animate="visible"
             custom={1}
             initial="hidden"
             variants={fadeUpVariants as any}
           >
-            <h2 className="mb-6 font-bold text-4xl tracking-tight sm:text-[50px] md:mb-4 md:text-[50px]">
+            <h2 className="mb-6 font-bold text-4xl mt-24 tracking-tight sm:text-[50px] md:mb-4 md:text-[50px]">
               <span className="bg-linear-to-b from-black to-black/80 bg-clip-text text-transparent dark:from-white dark:to-white/80">
                 {title1}
               </span>

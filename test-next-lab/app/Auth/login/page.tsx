@@ -1,6 +1,11 @@
+import MouseEffectCard from "@/components/kokonutui/mouse-effect-card";
 
 const Login = () => {
-  return <div>Login Page</div>
+  return (
+    <>
+    <MouseEffectCard/>
+    </>
+  )
 }   
 
 export default Login;

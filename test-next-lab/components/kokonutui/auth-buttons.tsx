@@ -1,7 +1,7 @@
 "use client";
 
 import ParticleButton from "@/components/kokonutui/particle-button";
-
+import Link from "next/link";
 const AuthButtons = () => {
   return (
     <div className="flex items-center gap-2">
@@ -12,7 +12,7 @@ const AuthButtons = () => {
           console.log("Login clicked");
         }}
       >
-        Login
+        <Link href="/Auth/login">Login</Link>
       </ParticleButton>
 
       <ParticleButton
@@ -23,7 +23,7 @@ const AuthButtons = () => {
           console.log("Signup clicked");
         }}
       >
-        Sign Up
+        <Link href="/Auth/signup">Sign Up</Link>
       </ParticleButton>
     </div>
   );
