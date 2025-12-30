@@ -12,7 +12,7 @@ const AuthButtons = () => {
           console.log("Login clicked");
         }}
       >
-        <Link href="/Auth/login">Login</Link>
+        <Link href="/login">Login</Link>
       </ParticleButton>
 
       <ParticleButton
@@ -23,7 +23,7 @@ const AuthButtons = () => {
           console.log("Signup clicked");
         }}
       >
-        <Link href="/Auth/signup">Sign Up</Link>
+        <Link href="/signup">Sign Up</Link>
       </ParticleButton>
     </div>
   );
