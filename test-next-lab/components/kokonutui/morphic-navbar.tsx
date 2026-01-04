@@ -8,9 +8,9 @@ import MainLogo from "../LogoMain";
 
 const navItems = {
   "/": { name: "home" },
-  "/works": { name: "About" },
+  "/about": { name: "About" },
   "/blog": { name: "Features" },
-  "/about": { name: "Active Projects" },
+  "/works": { name: "Active Projects" },
   "/LegalDocs": { name: "Legal Documents" },
   "/contact": { name: "Contact" },
 };
