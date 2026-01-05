@@ -11,7 +11,7 @@ const navItems = {
   "#AboutPage": { name: "About" },
   "/blog": { name: "Features" },
   "/works": { name: "Active Projects" },
-  "/LegalDocs": { name: "Legal Documents" },
+  "/LegalDocs": { name: "LegalDocuments" },
   "/contact": { name: "Contact" },
 };
 
