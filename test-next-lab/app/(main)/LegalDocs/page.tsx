@@ -3,8 +3,8 @@ import React from "react";
 import { useState } from "react";
 const LegalDocuments = () => {
    const [searchTerm, setSearchTerm] = useState("");
-   const onSearchButtonClick = (e:React.ChangeEvent<HTMLInputElement>) => {
-    e.preventDefault();
+   const handleSearch = (e:React.ChangeEvent<HTMLInputElement>) => {
+   
     const value = e.target.value;
     setSearchTerm(value);
     let b = value.trim().toLowerCase();
@@ -18,7 +18,7 @@ const LegalDocuments = () => {
   <h1 className="text-center">Legal Documents</h1>
   <div>
     {/* search */}
-    <input type="text"  id=""  placeholder="search any legal doc here" value={searchTerm} onChange={onSearchButtonClick} />
+    <input type="text"  id=""  placeholder="search any legal doc here" value={searchTerm} onChange={handleSearch} />
   </div>
   {/* polices */}
   <div className = "bg-amber-600">
