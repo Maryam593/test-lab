@@ -43,3 +43,5 @@ const LegalDocuments = () => {
 };
 
 export default LegalDocuments;
+
+// right now this page is separte from home page.. because as from name it is displaying its importance.. its about legal notes.. thats why its in seprate page.. also soon when auth users are set, it will be officially more secure, but right now we assume its an important part of the website and hence hold that importance 
