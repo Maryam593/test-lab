@@ -20,6 +20,25 @@ const LegalDocuments = () => {
     {/* search */}
     <input type="text"  id=""  placeholder="search any legal doc here" value={searchTerm} onChange={onSearchButtonClick} />
   </div>
+  {/* polices */}
+  <div className = "bg-amber-600">
+    <h1>Policies</h1>
+    <hr />
+
+  </div>
+  {/* permits */}
+  <div className = "bg-red-400">
+    <h1>Permits</h1>
+    <hr />
+
+  </div>
+  {/* compliance */}
+  {/* permits */}
+  <div className = "bg-teal-700">
+    <h1>Compliance</h1>
+    <hr />
+
+  </div>
   </>);
 };
 
