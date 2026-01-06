@@ -27,6 +27,12 @@ const docs = [
     description: "Official document of permit for selling units of Landmark.",
     category: "permits",
   },
+  {
+    id : 5,
+    name : "Regulatory Compliance Certificate",
+    description : "Certificate ensuring PropStake's adherence to industry regulations.",
+    category : "compliance",
+  }
 ];
 
 const categoryColors: Record<string, string> = {
