@@ -31,28 +31,7 @@ type TweetCardProps = {
   reply?: ReplyProps;
 };
 
-export default function TweetCard({
-  authorName = "Dorian",
-  authorHandle = "dorianbaffier",
-  authorImage = "https://pbs.twimg.com/profile_images/1992215290936205312/N_EuwLUO_400x400.jpg",
-  content = [
-    "All components from KokonutUI can now be open in @v0 🎉",
-    "1. Click on 'Open in V0'",
-    "2. Customize with prompts",
-    "3. Deploy to your app",
-  ],
-  isVerified = true,
-  timestamp = "Jan 18, 2025",
-  reply = {
-    authorName: "shadcn",
-    authorHandle: "shadcn",
-    authorImage:
-      "https://pbs.twimg.com/profile_images/1593304942210478080/TUYae5z7_400x400.jpg",
-    content: "Awesome.",
-    isVerified: true,
-    timestamp: "Jan 18",
-  },
-}: TweetCardProps) {
+export default function TweetCard(TweetCardProps: TweetCardProps) {
   return (
     <Link
       href="https://x.com/dorianbaffier/status/1880291036410572934"
@@ -86,9 +65,9 @@ export default function TweetCard({
             <div className="shrink-0">
               <div className="h-10 w-10 overflow-hidden rounded-full">
                 <img
-                  alt={authorName}
+                  alt={TweetCardProps.authorName}
                   className="h-full w-full object-cover"
-                  src={authorImage}
+                  src={TweetCardProps.authorImage}
                 />
               </div>
             </div>
@@ -98,14 +77,14 @@ export default function TweetCard({
                 <div className="flex flex-col">
                   <div className="flex items-center gap-1">
                     <span className="cursor-pointer font-semibold text-black hover:underline dark:text-white/90">
-                      {authorName}
+                      {TweetCardProps.authorName}
                     </span>
-                    {isVerified && (
+                    {TweetCardProps.isVerified && (
                       <VerifiedIcon className="h-4 w-4 text-blue-400" />
                     )}
                   </div>
                   <span className="text-black text-sm dark:text-white/60">
-                    @{authorHandle}
+                    @{TweetCardProps.authorHandle}
                   </span>
                 </div>
                 <button
@@ -132,7 +111,7 @@ export default function TweetCard({
           </div>
 
           <div className="mt-2">
-            {content.map((item, index) => (
+            {TweetCardProps.content.map((item:any, index:any) => (
               <p
                 className="text-base text-black dark:text-white/90"
                 key={index}
@@ -141,42 +120,42 @@ export default function TweetCard({
               </p>
             ))}
             <span className="mt-2 block text-black text-sm dark:text-white/50">
-              {timestamp}
+              1{TweetCardProps.timestamp}
             </span>
           </div>
 
-          {reply && (
+          {TweetCardProps.reply && (
             <div className="mt-4 border-black/[0.08] border-t pt-4 dark:border-white/[0.08]">
               <div className="flex gap-3">
                 <div className="shrink-0">
                   <div className="h-10 w-10 overflow-hidden rounded-full">
                     <img
-                      alt={reply.authorName}
+                      alt={TweetCardProps.reply.authorName}
                       className="h-full w-full object-cover"
-                      src={reply.authorImage}
+                      src={TweetCardProps.reply.authorImage}
                     />
                   </div>
                 </div>
                 <div className="flex-1">
                   <div className="flex items-center gap-1">
                     <span className="cursor-pointer font-semibold text-black hover:underline dark:text-white/90">
-                      {reply.authorName}
+                      {TweetCardProps.reply.authorName}
                     </span>
-                    {reply.isVerified && (
+                    {TweetCardProps.reply.isVerified && (
                       <VerifiedIcon className="h-4 w-4 text-blue-400" />
                     )}
                     <span className="text-black text-sm dark:text-white/60">
-                      @{reply.authorHandle}
+                      @{TweetCardProps.reply.authorHandle}
                     </span>
                     <span className="text-black text-sm dark:text-white/60">
                       ·
                     </span>
                     <span className="text-black text-sm dark:text-white/60">
-                      {reply.timestamp}
+                      {TweetCardProps.reply.timestamp}
                     </span>
                   </div>
                   <p className="mt-1 text-black text-sm dark:text-white/80">
-                    {reply.content}
+                    {TweetCardProps.reply.content}
                   </p>
                 </div>
               </div>

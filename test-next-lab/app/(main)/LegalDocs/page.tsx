@@ -7,12 +7,16 @@ const LegalDocuments = () => {
    
     const value = e.target.value;
     setSearchTerm(value);
-    let b = value.trim().toLowerCase();
-    const docs: any[] = [];
-    docs.filter((doc:any) => {
-        doc.title.toLowerCase().includes(b) || doc.content.toLowerCase().includes(b)
-    })
+   
    }
+  const filterResults = (value: string) => {
+     let b = value.trim().toLowerCase();
+    const docs: any[] = [];
+    const resultsdocs = docs.filter((doc:any) => {
+        doc.name.toLowerCase().includes(b) || doc.value.toLowerCase().includes(b)
+    })
+    return resultsdocs;
+  }
 
   return (<>
   <h1 className="text-center">Legal Documents</h1>
@@ -21,24 +25,31 @@ const LegalDocuments = () => {
     <input type="text"  id=""  placeholder="search any legal doc here" value={searchTerm} onChange={handleSearch} />
   </div>
   {/* polices */}
-  <div className = "bg-amber-600">
+  {/* <div className = "bg-amber-600">
     <h1>Policies</h1>
     <hr />
 
-  </div>
+  </div> */}
   {/* permits */}
-  <div className = "bg-red-400">
+  {/* <div className = "bg-red-400">
     <h1>Permits</h1>
     <hr />
 
-  </div>
+  </div> */}
   {/* compliance */}
   {/* permits */}
-  <div className = "bg-teal-700">
+  {/* <div className = "bg-teal-700">
     <h1>Compliance</h1>
     <hr />
 
-  </div>
+  </div> */}
+  {
+    filterResults(searchTerm).map((doc:any) => (
+      <div key={doc.id} className="border-b p-4">
+        <h2 className="text-lg font-semibold">{doc.name}</h2>
+      </div>
+    ))
+  }
   </>);
 };
 
