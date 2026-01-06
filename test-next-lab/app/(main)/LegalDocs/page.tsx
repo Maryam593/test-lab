@@ -29,6 +29,12 @@ const docs = [
   },
 ];
 
+const categoryColors: Record<string, string> = {
+  policies: "bg-yellow-100 dark:bg-yellow-900",
+  permits: "bg-red-100 dark:bg-red-900",
+  compliance: "bg-purple-100 dark:bg-purple-900",
+};
+
 const LegalDocuments = () => {
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -45,81 +51,62 @@ const LegalDocuments = () => {
     );
   };
 
+  const categories = ["policies", "permits", "compliance"];
+
   return (
-    <>
-      <h1 className="text-center">Legal Documents</h1>
-      <div>
-        {/* search */}
+    <div className="max-w-5xl mx-auto px-4 py-6">
+      <h1 className="text-3xl font-bold text-center mb-6 text-gray-800 dark:text-gray-200">
+        Legal Documents
+      </h1>
+
+      {/* search */}
+      <div className="flex justify-center mb-6">
         <input
           type="text"
-          placeholder="search any legal doc here"
+          placeholder="Search any legal doc here..."
           value={searchTerm}
           onChange={handleSearch}
-          className="border p-2 rounded w-full my-2"
+          className="w-full md:w-2/3 p-3 rounded-lg border border-gray-300 dark:border-gray-700 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400 dark:bg-gray-800 dark:text-white"
         />
       </div>
 
-      {/* policies */}
-      <div className="bg-amber-600 p-4 rounded my-4">
-        <h2 className="font-bold text-lg">Policies</h2>
-        <hr className="my-2" />
-        {filterResults(searchTerm)
-          .filter((doc) => doc.category === "policies")
-          .map((doc) => (
-            <TweetCard
-              key={doc.id}
-              authorName="PropStake"
-              authorHandle="@propstake"
-              authorImage="/propstake-logo.png"
-              content={[doc.description]}
-              timestamp={new Date().toISOString()}
-              {...doc}
-            />
-          ))}
-      </div>
+      {categories.map((category) => {
+        const filteredDocs = filterResults(searchTerm).filter(
+          (doc) => doc.category === category
+        );
 
-      {/* permits */}
-      <div className="bg-red-400 p-4 rounded my-4">
-        <h2 className="font-bold text-lg">Permits</h2>
-        <hr className="my-2" />
-        {filterResults(searchTerm)
-          .filter((doc) => doc.category === "permits")
-          .map((doc) => (
-            <TweetCard
-              key={doc.id}
-              authorName="PropStake"
-              authorHandle="@propstake"
-              authorImage="/propstake-logo.png"
-              content={[doc.description]}
-              timestamp={new Date().toISOString()}
-              {...doc}
-            />
-          ))}
-      </div>
+        if (filteredDocs.length === 0) return null;
 
-      {/* compliance */}
-      <div className="bg-purple-600 p-4 rounded my-4">
-        <h2 className="font-bold text-lg">Compliance</h2>
-        <hr className="my-2" />
-        {filterResults(searchTerm)
-          .filter((doc) => doc.category === "compliance")
-          .map((doc) => (
-            <TweetCard
-              key={doc.id}
-              authorName="PropStake"
-              authorHandle="@propstake"
-              authorImage="/propstake-logo.png"
-              content={[doc.description]}
-              timestamp={new Date().toISOString()}
-              {...doc}
-            />
-          ))}
-      </div>
-    </>
+        return (
+          <div
+            key={category}
+            className={`p-4 rounded-lg mb-6 ${categoryColors[category]}`}
+          >
+            <h2 className="text-2xl font-semibold mb-3 capitalize text-gray-800 dark:text-gray-200">
+              {category}
+            </h2>
+            <hr className="mb-4 border-gray-300 dark:border-gray-700" />
+
+            <div className="flex flex-col gap-4">
+              {filteredDocs.map((doc) => (
+                <TweetCard
+                  key={doc.id}
+                  authorName="PropStake"
+                  authorHandle="@propstake"
+                  authorImage="/propstake-logo.png"
+                  content={[doc.description]}
+                  timestamp={new Date().toISOString()}
+                  {...doc}
+                />
+              ))}
+            </div>
+          </div>
+        );
+      })}
+    </div>
   );
 };
 
 export default LegalDocuments;
-
 
 // right now this page is separte from home page.. because as from name it is displaying its importance.. its about legal notes.. thats why its in seprate page.. also soon when auth users are set, it will be officially more secure, but right now we assume its an important part of the website and hence hold that importance 
