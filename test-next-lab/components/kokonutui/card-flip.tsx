@@ -19,14 +19,10 @@ export interface CardFlipProps {
   subtitle?: string;
   description?: string;
   features?: string[];
+  content?:string
 }
 
-export default function CardFlip({
-  title = "Design Systems",
-  subtitle = "Explore the fundamentals",
-  description = "Dive deep into the world of modern UI/UX design.",
-  features = ["UI/UX", "Modern Design", "Tailwind CSS", "Kokonut UI"],
-}: CardFlipProps) {
+export default function CardFlip(CardFlipProps: CardFlipProps) {
   const [isFlipped, setIsFlipped] = useState(false);
 
   return (
@@ -85,10 +81,10 @@ export default function CardFlip({
             <div className="flex items-center justify-between gap-3">
               <div className="space-y-1.5">
                 <h3 className="font-semibold text-lg text-zinc-900 leading-snug tracking-tighter transition-all duration-500 ease-out-expo group-hover:translate-y-[-4px] dark:text-white">
-                  {title}
+                  {CardFlipProps.title}
                 </h3>
                 <p className="line-clamp-2 text-sm text-zinc-600 tracking-tight transition-all delay-[50ms] duration-500 ease-out-expo group-hover:translate-y-[-4px] dark:text-zinc-200">
-                  {subtitle}
+                  {CardFlipProps.subtitle}
                 </p>
               </div>
               <div className="group/icon relative">
@@ -122,15 +118,15 @@ export default function CardFlip({
           <div className="flex-1 space-y-6">
             <div className="space-y-2">
               <h3 className="font-semibold text-lg text-zinc-900 leading-snug tracking-tight transition-all duration-500 ease-out-expo group-hover:translate-y-[-2px] dark:text-white">
-                {title}
+                {CardFlipProps.title}
               </h3>
               <p className="line-clamp-2 text-sm text-zinc-600 tracking-tight transition-all duration-500 ease-out-expo group-hover:translate-y-[-2px] dark:text-zinc-400">
-                {description}
+                {CardFlipProps.description}
               </p>
             </div>
 
             <div className="space-y-2">
-              {features.map((feature, index) => (
+              {CardFlipProps.features?.map((feature, index) => (
                 <div
                   className="flex items-center gap-2 text-sm text-zinc-700 transition-all duration-500 dark:text-zinc-300"
                   key={feature}
@@ -164,7 +160,9 @@ export default function CardFlip({
               )}
             >
               <span className="font-medium text-sm text-zinc-900 transition-colors duration-300 group-hover/start:text-orange-600 dark:text-white dark:group-hover/start:text-orange-400">
-                Start today
+                
+
+                {CardFlipProps.content}
               </span>
               <div className="group/icon relative">
                 <div

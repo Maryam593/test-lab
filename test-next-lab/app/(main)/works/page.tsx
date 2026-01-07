@@ -2,6 +2,7 @@
 
 const ActiveProjects = () => {
     return (<>
+    <h1>Our Listed Properties</h1>
     </>)
 }
 
