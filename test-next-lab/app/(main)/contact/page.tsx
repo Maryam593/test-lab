@@ -1,6 +1,7 @@
 "use client"
 import Lottie from "react-lottie-player"
 import { useEffect, useState } from "react"
+import SocialButton from "@/components/kokonutui/social-button"
 
 const ContactPage = () => {
   const [animationData, setAnimationData] = useState<any>(null)
@@ -21,14 +22,18 @@ const ContactPage = () => {
       <div className="mt-10 ml-10 mr-10 mb-10 grid grid-cols-[1fr_auto_1.5fr] gap-10 items-start">
 
         {/* left section */}
-        <div className="flex flex-col gap-4 text-[10px]">
+        <div className="flex flex-col gap-4 items-center">
           {animationData && (
-            <Lottie animationData={animationData} loop={true} />
+            <Lottie
+              animationData={animationData}
+              loop={true}
+              play={true}          // ensure animation plays
+              style={{ width: 300, height: 300 }} // explicit size
+            />
           )}
           <h2 className="text-teal-800 text-xl font-semibold">Reelio</h2>
-          <p className="text-teal-600 text-sm">
-            Helping creators and brands connect smarter, faster, and better.
-          </p>
+         {/* social icons */}
+         <p><SocialButton /></p>
         </div>
 
         {/* divider */}
