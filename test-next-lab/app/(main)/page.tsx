@@ -2,6 +2,7 @@
 import ShapeHero from "@/components/kokonutui/shape-hero";
 import { motion } from "framer-motion";
 import AboutPage from "./about/page";
+import ContactPage from "./contact/page";
 
 export default function Home() {
   return (
@@ -22,6 +23,11 @@ export default function Home() {
         <section id="AboutPage" className="w-full min-h-screen pt-20 overflow-hidden"> 
       
             <AboutPage />
+        </section>
+        <section id="contact" className="w-full min-h-screen pt-20 overflow-hidden"> 
+      
+            {/* Contact Page Component can be imported and used here */}
+            <ContactPage />
         </section>
 
       </main>

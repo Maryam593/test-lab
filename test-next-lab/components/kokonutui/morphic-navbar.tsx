@@ -12,7 +12,7 @@ const navItems = {
   "/blog": { name: "Features" },
   "/works": { name: "Active Projects" },
   "/LegalDocs": { name: "LegalDocuments" },
-  "/contact": { name: "Contact" },
+  "#contact": { name: "Contact" },
 };
 
 export function MorphicNavbar() {
