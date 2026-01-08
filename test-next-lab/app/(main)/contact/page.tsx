@@ -1,23 +1,49 @@
+import "../../globals.css"
 const contactPage = () => {
   return (
     <>
     <div>
         <h1 className="text-center text-5xl font-semibold text-teal-700">Get in Touch</h1>
         <p className="text-center text-[25px] text-teal-900">Have a question or need assistance? Send us a message and we'll get back to you soon.</p>
-   <div className="grid grid-cols-2">
-    <div></div>
- {/* form */}
- <div>
-    <form className="flex flex-col p-10">
-        <label className="text-teal-800 text-[10px] font-medium mb-2" htmlFor="email">Email</label>
-        <input className="border border-teal-400 rounded-md p-2 mb-4" type="email" id="email" name="email" required />
-        <label className="text-teal-800 text-[10px] font-medium mb-2" htmlFor="message">Message</label>
-        <textarea className="border border-teal-400 rounded-md p-2 mb-4" id="message" name="message" rows={5} required></textarea>
-        <button className="bg-teal-600 text-white font-semibold py-2 px-4 rounded-md hover:bg-teal-700 transition duration-300 w-[200px]" type="submit">Send Message</button>
-    </form>
+ \
+ <div className="mt-10 ml-10 mr-10 mb-10 grid grid-cols-[1fr_auto_1.5fr] gap-10 items-start">
 
- </div>
-   </div>
+  {/* left placeholder / logo / info */}
+  <div className="flex flex-col gap-2">
+    <h2 className="text-teal-800 text-xl font-semibold">Reelio</h2>
+    <p className="text-teal-600 text-sm">Future ka tagline yahan daal lena</p>
+  </div>
+
+  {/* divider */}
+  <div className="w-px h-full bg-teal-600/40"></div>
+
+  {/* form */}
+  <form className="flex flex-col p-2">
+    <label className="text-teal-800 text-xs font-medium mb-1" htmlFor="email">Email</label>
+    <input
+      className="border border-teal-400 rounded-md p-2 mb-4"
+      type="email"
+      id="email"
+      name="email"
+      required
+    />
+    <label className="text-teal-800 text-xs font-medium mb-1" htmlFor="message">Message</label>
+    <textarea
+      className="border border-teal-400 rounded-md p-2 mb-4"
+      id="message"
+      name="message"
+      rows={5}
+      required
+    />
+    <button
+      className="bg-teal-600 text-white font-semibold py-2 px-4 rounded-md hover:bg-teal-700 transition duration-300 w-[200px]"
+      type="submit"
+    >
+      Send Message
+    </button>
+  </form>
+</div>
+
     </div>
     </>
   )
