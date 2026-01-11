@@ -371,7 +371,7 @@ export default function MouseEffectCard({
                 </p>
               </div>
             )}
-            <div className="mt-2 flex items-center gap-3">
+            <div className="mt-2 mb-6 flex items-center gap-3">
               <Button asChild className="rounded-full shadow-lg" size="lg">
                 <a
                   href={primaryCtaUrl}
