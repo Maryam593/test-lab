@@ -45,6 +45,23 @@ export interface MouseEffectCardProps {
   secondaryCtaUrl?: string;
   footerText?: string;
 }
+// type props= {
+//    className?: string;
+//   children?: React.ReactNode;
+//   dotSize?: number;
+//   dotSpacing?: number;
+//   repulsionRadius?: number;
+//   repulsionStrength?: number;
+//   title?: string;
+//   subtitle?: string;
+//   topText?: string;
+//   topSubtext?: string;
+//   primaryCtaText?: string;
+//   primaryCtaUrl?: string;
+//   secondaryCtaText?: string;
+//   secondaryCtaUrl?: string;
+//   footerText?: string;
+// }
 
 interface Dot {
   id: string;
@@ -243,15 +260,15 @@ export default function MouseEffectCard({
   dotSpacing = 16,
   repulsionRadius = 80,
   repulsionStrength = 20,
-  title = "Acme",
-  subtitle = "Build interfaces with interactive patterns",
-  topText = "Case Study",
-  topSubtext = "Discover something new",
-  primaryCtaText = "Get Started",
+  title = "",
+  subtitle = "",
+  topText = "",
+  topSubtext = "",
+  primaryCtaText = "",
   primaryCtaUrl = "#",
-  secondaryCtaText = "View Docs",
+  secondaryCtaText = "",
   secondaryCtaUrl = "#",
-  footerText = "We do it all",
+  footerText = "",
 }: MouseEffectCardProps) {
   const innerContainerRef = useRef<HTMLDivElement>(null);
   const mouseX = useMotionValue(Number.POSITIVE_INFINITY);
@@ -400,6 +417,7 @@ export default function MouseEffectCard({
             </div>
           </div>
         )}
+        {children}
       </CardContent>
     </Card>
   );
