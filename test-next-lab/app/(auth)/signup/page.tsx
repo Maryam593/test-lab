@@ -11,7 +11,7 @@ export default function SignUpPage() {
         topText="" // Top text bhi khali kar dein
         footerText="Already a member? Login here"
         primaryCtaText="Sign Up"
-        primaryCtaUrl="/login"
+        primaryCtaUrl="/"
         className="max-w-[450px] max-h-[700px]" // Card ki width thodi barhadi
       >
         <form className="flex flex-col gap-4  w-full px-4 relative z-20" onSubmit={(e) => e.preventDefault()}>
