@@ -1,48 +1,46 @@
-//route.ts for signup 
-import { NextResponse } from 'next/server';
-import pool from '../../utlis/dbConnect'; // Aapne folder ka naam 'utlis' rakha hai
-import bcrypt from 'bcryptjs';
+import { NextResponse } from "next/server";
+import User from "@/app/models/User";
+import { dbSync } from "../../utlis/dbSync";
+import bcrypt from "bcryptjs";
 
-export async function POST(request: Request) {
-    try {
-        // 1. Frontend se data receive karein
-        const { fname, lname, email, password } = await request.json();
+export async function POST(req: Request) {
+  try {
+    const body = await req.json();
+    const { email, password } = body;
 
-        // Basic validation
-        if (!email || !password) {
-            return NextResponse.json({ message: "Email and Password are required" }, { status: 400 });
-        }
-
-        // 2. Check karein user pehle se register toh nahi
-        const userCheck = await pool.query('SELECT * FROM users WHERE email = $1', [email]);
-        if (userCheck.rows.length > 0) {
-            return NextResponse.json({ message: "User already exists" }, { status: 400 });
-        }
-
-        // 3. Password ko secure (Hash) karein
-        const salt = await bcrypt.genSalt(10);
-        const hashedPassword = await bcrypt.hash(password, salt);
-
-        // 4. Database mein insert karein
-        const query = `
-            INSERT INTO users (first_name, last_name, email, password)
-            VALUES ($1, $2, $3, $4)
-            RETURNING id, email;
-        `;
-        const values = [fname, lname, email, hashedPassword];
-        
-        const result = await pool.query(query, values);
-
-        return NextResponse.json({ 
-            message: "User created successfully!", 
-            user: result.rows[0] 
-        }, { status: 201 });
-
-    } catch (error: any) {
-        console.error("Database Error:", error);
-        return NextResponse.json({ 
-            message: "Internal Server Error", 
-            error: error.message 
-        }, { status: 500 });
+    if (!email || !password) {
+      return NextResponse.json(
+        { error: "Email aur password lazmi hain" },
+        { status: 400 }
+      );
     }
+
+    await dbSync();
+
+    const existing = await User.findOne({ where: { email } });
+    if (existing) {
+      return NextResponse.json(
+        { error: "Email already registered" },
+        { status: 409 }
+      );
+    }
+
+    // bcrypt hashing
+    const hashed = await bcrypt.hash(password, 10); // 10 = salt rounds
+
+    const user = await User.create({
+      email,
+      password: hashed
+    });
+
+    return NextResponse.json(
+      { message: "Signup successful", user },
+      { status: 201 }
+    );
+  } catch (e: any) {
+    return NextResponse.json(
+      { error: e.message || "Signup failed" },
+      { status: 500 }
+    );
+  }
 }
