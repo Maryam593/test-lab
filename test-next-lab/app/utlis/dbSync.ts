@@ -1,5 +1,4 @@
 import sequelize from "../models/User";
-import User from "@/app/models/User";
 
 let synced = false;
 

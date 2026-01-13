@@ -6,11 +6,11 @@ import bcrypt from "bcryptjs";
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { email, password } = body;
+    const { email, password, firstName, lastName } = body;
 
-    if (!email || !password) {
+    if (!email || !password || !firstName || !lastName) {
       return NextResponse.json(
-        { error: "Email aur password lazmi hain" },
+        { error: "All fields are required" },
         { status: 400 }
       );
     }
@@ -30,7 +30,9 @@ export async function POST(req: Request) {
 
     const user = await User.create({
       email,
-      password: hashed
+      password: hashed,
+      firstName: firstName,
+      lastName: lastName
     });
 
     return NextResponse.json(
