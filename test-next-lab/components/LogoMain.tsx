@@ -4,7 +4,7 @@ const MainLogo = () => {
   return (
     <TypewriterTitle
       sequences={[
-        { text: "Reelio", deleteAfter: false },
+        { text: "DaCrib", deleteAfter: false },
       ]}
     />
   );
