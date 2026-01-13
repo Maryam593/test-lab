@@ -14,7 +14,34 @@ export default function SignUpPage() {
         primaryCtaUrl="/"
         className="max-w-[450px] max-h-[700px]" // Card ki width thodi barhadi
       >
-        <form className="flex flex-col gap-4  w-full px-4 relative z-20" onSubmit={(e) => e.preventDefault()}>
+        <form
+         className="flex flex-col gap-4  w-full px-4 relative z-20"  onSubmit={async (e) => {
+    e.preventDefault();
+
+    const form = e.target as HTMLFormElement;
+    const data = {
+      email: (form.elements.namedItem("email") as HTMLInputElement).value,
+      password: (form.elements.namedItem("password") as HTMLInputElement).value
+    };
+
+    try {
+      const res = await fetch("/api/signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+      });
+
+      const result = await res.json();
+      if (!res.ok) {
+        alert(result.error);
+      } else {
+        alert(result.message);
+      }
+    } catch (err) {
+      console.error(err);
+      alert("Something went wrong");
+    }
+  }}>
           {/* First & Last Name */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <input
